@@ -1,15 +1,17 @@
 
 var userGuess;
 var guessArr = [];
-var puzzleArr = ['hello world'];
+var puzzleArr = ['awesome pizza', 'delicious pie', 'GrEaSy FrIeS'];
 var random = Math.floor(Math.random() * puzzleArr.length);
-var currentPuzzle = puzzleArr[random];
+var currentPuzzle = puzzleArr[random].toUpperCase();
 var userGuess;
 var keyNum;
 var tryCount = 6;
+var correctArr = [];
 var winText = document.getElementById('win-text');
 var blanks = document.getElementById('blanks');
 var tryCounter = document.getElementById('try-counter');
+var winCounter = 0;
 var guesses = document.getElementById('guesses');
 var tryAgain =  document.getElementById('try-again')
 var html = document.getElementsByTagName('html')[0].innerHTML;
@@ -56,67 +58,11 @@ var leftLeg = function () {
 	ctx.stroke();
 }
 
-var blankify = function () {
-	for (var i = 0; i < currentPuzzle.length; i++) {
-		var span = document.createElement("span");
-		var current = span.setAttribute("id", currentPuzzle[i]);  
-		blanks.appendChild(span);
-
-		if (currentPuzzle[i]=== " ") {
-			span.innerHTML = '&nbsp;&nbsp;&nbsp;';
-		}
-		else {
-			span.innerHTML = '&nbsp;_&nbsp;';
-		}
-	}
-}
-
-
-
-var showCorrect = function () {
-	for (var i = 0; i < currentPuzzle.length; i++) {
-		if (currentPuzzle[i] === userGuess && tryCount > 0) {
-			document.getElementById(currentPuzzle[i]).innerHTML = currentPuzzle[i];
-		}
-	}
-}
-
-var guessList = function () {
-	if (guessArr.indexOf(userGuess) === -1 && tryCount>0) {
-		if (keyNum>=65 && keyNum<=90) {
-
-			guessArr.push(userGuess);
-			guesses.innerHTML = guessArr;
-		}
-	}
-}
-
-var checkGuess = function () {
-	if (currentPuzzle.indexOf(userGuess)===-1 && tryCount > 0 && guessArr.indexOf(userGuess) === -1) {
-		if (keyNum>=65 && keyNum<=90) {
-			console.log('regex working')
-			tryCount-=1;
-			tryCounter.innerHTML = tryCount;
-		}
-	}
-}
-
-var checkWin = function () {
-	var underscore = html.search('_')
-	if (underscore && tryCount <= 0) {
-		winText.innerHTML = 'You Lose!';
-		document.getElementById('try-again').style.visibility = 'visible';
-	} 
-	else if (!underscore && tryCount <= 0) {
-		winText.innerHTML = 'You win!';
-		document.getElementById('try-again').style.visibility = 'visible';
-	}
-}
-
-
-
 var drawMan = function () {
 	switch(tryCount) {
+		case 6:
+	     
+	        break;
 	    case 5:
 	        head();
 	        break;
@@ -157,6 +103,110 @@ var draw = function () {
 }
 
 	
+var blankify = function () {
+	for (var i = 0; i < currentPuzzle.length; i++) {
+		var span = document.createElement("span");
+		var current = span.setAttribute("id", currentPuzzle[i]); 
+		
+		blanks.appendChild(span);
+
+		if (currentPuzzle[i]=== " ") {
+			span.innerHTML = '&nbsp;';
+		}
+		else {
+			span.innerHTML = '_';
+		}
+	}
+}
+
+
+
+var showCorrect = function () {
+	var letterSpans = blanks.getElementsByTagName("span");
+	for (var i = 0; i < letterSpans.length; ++i) {
+
+		if (letterSpans[i].getAttribute('id')==userGuess && tryCount > 0) {
+			letterSpans[i].innerHTML = userGuess;
+			if (correctArr.indexOf(userGuess) === -1) {
+				correctArr.push(userGuess);
+				console.log(correctArr +'correctArr output');
+			}
+		}
+	}
+}
+
+var guessList = function () {
+	if (guessArr.indexOf(userGuess) === -1 && tryCount>0) {
+		if (keyNum>=65 && keyNum<=90) {
+			guessArr.push(userGuess);
+			guesses.innerHTML = guessArr;
+		}
+	}
+}
+
+var checkGuess = function () {
+	if (currentPuzzle.indexOf(userGuess)===-1 && tryCount > 0 && guessArr.indexOf(userGuess) === -1) {
+		if (keyNum>=65 && keyNum<=90) {
+			tryCount-=1;
+			tryCounter.innerHTML = tryCount;
+		}
+	}
+}
+
+
+function checkSpan () {
+	if (solution===currentPuzzle) {
+		console.log('You win');
+	}
+	concatArr = [];
+	var solution;
+	var array = blanks.getElementsByTagName("span");
+	for (var i=0; i<array.length; i++) {
+			concatArr.push(array[i].innerHTML);
+	}
+	
+	solution = concatArr.join('').replace(/&nbsp;/gi,' ');
+}
+
+var tryAgain = function () {
+	var again = confirm('Game over.  Would you like to play again?');
+	if (again) {
+		location.reload();
+	} else {
+		alert('Have a nice day!')
+		window.location.href = "https://www.google.com";
+	}
+}
+var checkWin = function () {
+	var underscore = html.search('_')
+	var solution;
+	var array = blanks.getElementsByTagName("span");
+	concatArr = [];
+	for (var i=0; i<array.length; i++) {
+			concatArr.push(array[i].innerHTML);
+	}
+
+	solution = concatArr.join('').replace(/&nbsp;/gi,' ');
+		console.log(solution);
+	if (solution===currentPuzzle && tryCount > 0) {
+			
+		winText.innerHTML = 'You win!';
+
+		// document.getElementById('try-again').style.visibility = 'visible';
+		setTimeout(tryAgain, 1000);
+	}
+}
+
+var checkLoss = function () {
+	if (tryCount <= 0) {
+	winText.innerHTML = 'You Lose!';
+	// document.getElementById('try-again').style.visibility = 'visible';
+	setTimeout(tryAgain, 1000);
+	} 
+}
+
+
+
 
 
 
@@ -169,18 +219,19 @@ var loadGame = function () {
 }
 document.onload = loadGame();
 document.onkeyup = function (event) {
-		userGuess = event.key;
+		userGuess = event.key.toUpperCase();
 		keyNum = event.keyCode
-		console.log();
 		checkGuess();
 		showCorrect();
 		guessList();
 		checkWin();
-		drawMan();	
+		checkLoss();
+		drawMan();
+		// checkSpan();	
 }
-tryAgain.addEventListener('click', function () {
-		location.reload();
-	});
+// tryAgain.addEventListener('click', function () {
+// 		location.reload();
+// 	});
 
 
 
