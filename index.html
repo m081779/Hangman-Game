@@ -17,14 +17,20 @@
 
 </head>
 <body>
-	<div class="container">	
-		<div class="row">	
-			<h1 class="page-header">Hangman game</h1>
-			<div class="col-md-6 well">
-				<canvas></canvas>
+	<div class="container">
+		<div class="row">
+			<h1 class="page-header">
+				Hangman Game!
+			</h1>
+			<div class="col-md-5 well" id="hangman">
+				<div id="win-text" class="well text-center"></div>
+				<canvas ></canvas>
 			</div>
-			<div class="col-md-6 well">
-				
+			<div class="col-md-6 well text-center" id="data">
+				<div id="blanks" class="well"></div>
+				<div class="well text-center">Guesses left: <span id="try-counter"></span></div>
+				<div class="well text-center">Guesses made: <span id="guesses"></span></div>
+				<button class="btn btn-block btn-danger" id="try-again">Click here to try again!</button>
 			</div>
 		</div>
 	</div>

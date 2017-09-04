@@ -4,3 +4,17 @@ body {
 	margin: 0;
 	padding: 0;	
 }
+
+canvas {
+/*	border: 1px solid blue;*/
+	margin: auto;
+	display: block;
+}
+
+span {
+	font-size: 30px;
+}
+
+button#try-again {
+	visibility: hidden;
+}
