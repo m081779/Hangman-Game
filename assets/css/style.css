@@ -4,6 +4,7 @@ body {
 	margin: 0;
 	padding: 0;	
 	background-color: lightblue;
+	font-size: 18px;
 }
 
 canvas {
@@ -13,10 +14,12 @@ canvas {
 }
 
 span {
-	font-size: 30px;
-	margin-right: 10px;
+	font-size: 25px;
+	margin-right: 2px;
 }
 
 button#try-again {
 	visibility: hidden;
+	font-size: 20px;
+	white-space: pre;
 }
