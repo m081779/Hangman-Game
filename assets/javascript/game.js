@@ -1,4 +1,3 @@
-
 var userGuess;
 var guessArr = [];
 var puzzleArr = ['awesome pizza', 'delicious pie', 'GrEaSy FrIeS'];
@@ -23,7 +22,12 @@ canvas.height = window.innerHeight/1.75;
 var head = function () {
 	ctx.beginPath();
 	ctx.arc(canvas.width/2,110,30,0,2*Math.PI);
+	ctx.moveTo(canvas.width/2 - 10, 100);
+	ctx.arc(canvas.width/2 - 10,100,5,0,2*Math.PI);
+	ctx.moveTo(canvas.width/2 + 10, 100);
+	ctx.arc(canvas.width/2 + 10,100,5,0,2*Math.PI);
 	ctx.stroke();	
+	
 }
 
 var body = function () {
@@ -58,6 +62,57 @@ var leftLeg = function () {
 	ctx.stroke();
 }
 
+var smileFace6 = function () {
+
+	ctx.beginPath();
+	ctx.arc(canvas.width/2,115,10,0,1*Math.PI);
+	ctx.stroke();
+}
+var smileFace5 = function () {
+	ctx.clearRect(canvas.width/2-12, 115, 24, 10);
+	ctx.beginPath();
+	ctx.arc(canvas.width/2,105,20,0.6,0.7*Math.PI);
+	ctx.stroke();
+}
+
+var smileFace4 = function () {
+	ctx.clearRect(canvas.width/2-12, 115, 35, 14);
+	ctx.beginPath();
+	ctx.moveTo(canvas.width/2 - 10, 118);
+	ctx.lineTo(canvas.width/2 + 10, 118);
+	ctx.stroke();
+}
+
+var smileFace3 = function () {
+	ctx.clearRect(canvas.width/2-12, 115, 24, 10);
+	ctx.beginPath();
+	ctx.arc(canvas.width/2,123,10,0,1 *Math.PI, true);
+	ctx.stroke();
+}
+
+var smileFace2 = function () {
+	ctx.clearRect(canvas.width/2-12, 115, 24, 10);
+	ctx.beginPath();
+	ctx.arc(canvas.width/2,123,10,0,2 *Math.PI, true);
+	ctx.stroke();
+}
+
+var smileFace1 = function () {
+	ctx.clearRect(canvas.width/2-15, 110, 30, 25);
+	ctx.beginPath();
+	ctx.moveTo(canvas.width/2 - 10, 121);
+	ctx.lineTo(canvas.width/2 + 10, 121);
+	ctx.stroke();
+
+	ctx.clearRect(canvas.width/2-18, 90, 36, 20);
+	ctx.beginPath();
+	
+	ctx.font="16px Arial";
+	ctx.fillStyle='black';
+	ctx.fillText("X",canvas.width/2 - 15,110);
+	ctx.fillText("X",canvas.width/2 + 5 ,110);
+}
+
 var drawMan = function () {
 	switch(tryCount) {
 		case 6:
@@ -65,21 +120,27 @@ var drawMan = function () {
 	        break;
 	    case 5:
 	        head();
+	        smileFace6();
 	        break;
 	    case 4:
 	        body();
+	        smileFace5();
 	        break;
 	    case 3:
 	        rightArm();
+	        smileFace4();
 	        break;
 	    case 2:
 	        leftArm();
+	        smileFace3();
 	        break;
 	    case 1:
 	        rightLeg();
+	        smileFace2();
 	        break;
 	    case 0:
 	        leftLeg();
+	        smileFace1();
 	        break;
 	    default:
 	        console.log('default triggered');
@@ -89,16 +150,23 @@ var drawMan = function () {
 
 var draw = function () {
 	ctx.beginPath();
-	ctx.strokeRect(20,50,20,350);
-	ctx.strokeRect(20,400,200,35);
-	ctx.strokeRect(20,30,200,20);
-	ctx.moveTo(20,80);
-	ctx.lineTo(70,30);
-	ctx.lineTo(90,50);
-	ctx.lineTo(40,100);
-	ctx.lineTo(20,80);
+	ctx.fillStyle = 'saddlebrown';
+	ctx.fillRect(80,50,20,300);
+	ctx.fillRect(80,330,200,55);
+	ctx.fillRect(80,30,165,20);
+
+	ctx.beginPath();
+	ctx.strokeStyle = 'saddlebrown';
+	ctx.moveTo(90,90);
+	ctx.lineTo(150,38);
+	ctx.lineWidth = '20';
+	ctx.stroke();
+
+	ctx.beginPath();
+	ctx.strokeStyle = 'black';
 	ctx.moveTo(canvas.width/2, 50);
 	ctx.lineTo(canvas.width/2, 80);
+	ctx.lineWidth = '2';
 	ctx.stroke();
 }
 
@@ -232,6 +300,3 @@ document.onkeyup = function (event) {
 // tryAgain.addEventListener('click', function () {
 // 		location.reload();
 // 	});
-
-
-
