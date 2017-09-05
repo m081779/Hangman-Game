@@ -1,6 +1,6 @@
 var userGuess;
 var guessArr = [];
-var puzzleArr = ['awesome pizza', 'delicious pie', 'GrEaSy FrIeS'];
+var puzzleArr = ['magneto', 'joker', 'doctor doom', 'lex luthor', 'loki', 'catwoman', 'two face', 'green goblin', 'red skull', 'mystique', 'juggernaut', 'venom', 'ultron', 'bizarro', 'doctor octopus', 'bane', 'the penguin', 'shredder', 'harley quinn', 'scarecrow', 'riddler', 'lizard', 'poison ivy', 'mr freeze', 'magog', 'mandarin', 'mysterio', 'neegan', 'the governor'];
 var random = Math.floor(Math.random() * puzzleArr.length);
 var currentPuzzle = puzzleArr[random].toUpperCase();
 var userGuess;
@@ -280,7 +280,7 @@ var checkLoss = function () {
 
 var loadGame = function () {
 	tryCounter.innerHTML = tryCount;
-	winText.innerHTML = 'Let\'s play!  Select a letter to start.'	
+	winText.innerHTML = 'Let\'s play!  Select a letter to start. Guess the Supervillain...'	
 
 	blankify();
 	draw();
