@@ -7,10 +7,10 @@
 
 	<!-- Link to local bootstrap files for working offline -->
 
-	<!-- <link rel="stylesheet" href="../../../bootstrap/css/bootstrap.css"> -->
+	<link rel="stylesheet" href="../../../bootstrap/css/bootstrap.css">
 
 	<!-- Link to Bootstrap CDN -->
-	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
 	
 	<link rel="stylesheet" href="assets/css/style.css">
 
@@ -27,7 +27,7 @@
 				<canvas ></canvas>
 			</div>
 			<div class="col-md-6 col-md-offset-1 well text-center" id="data">
-			<button class="btn btn-block btn-danger" id="try-again"><i class="glyphicon glyphicon-repeat"> </i>Click here to try again!</button>
+				<button class="btn btn-block btn-danger" id="try-again"><i class="glyphicon glyphicon-repeat"> </i>Click here to try again!</button>
 				<div id="blanks" class="well"></div>
 				<div class="well" id="show-pic"></div>
 				<div class="well text-center">Guesses left: <span id="try-counter"></span></div>
@@ -36,7 +36,11 @@
 			</div>
 		</div>
 	</div>
-
+	<audio src="assets/sounds/Batman Transition.mp3" type="audio/mpeg" id="batman-transition"></audio>
+	<audio src="assets/sounds/Punch.mp3" type="audio/mpeg" id="punch"></audio>
+	<audio src="assets/sounds/Success.mp3" type="audio/mpeg" id="success"></audio>
+	<audio src="assets/sounds/Fail.mp3" type="audio/mpeg" id="fail"></audio>
+	<audio src="assets/sounds/Win.mp3" type="audio/mpeg" id="win"></audio>
 	<script src="assets/javascript/game.js"></script>
 </body>
-</html>
+</html>	

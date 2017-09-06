@@ -7,18 +7,29 @@ var keyNum;
 var tryCount = 6;
 var numOfWins = 0;
 var correctArr = [];
+var win = document.getElementById('win');
+var punch = document.getElementById('punch');
+var success = document.getElementById('success');
+var fail = document.getElementById('fail');
+var batmanTransition = document.getElementById('batman-transition');
 var winText = document.getElementById('win-text');
 var blanks = document.getElementById('blanks');
 var showPic = document.getElementById('show-pic');
 var tryCounter = document.getElementById('try-counter');
-var winCounter = 0;
 var guesses = document.getElementById('guesses');
 var tryAgain =  document.getElementById('try-again')
-var html = document.getElementsByTagName('html')[0].innerHTML;
 var canvas = document.querySelector('canvas');
 var ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth/4;
 canvas.height = window.innerHeight/1.75;
+
+var audioPreload = function () {
+	win.load();
+	punch.load();
+	success.load();
+	fail.load();
+	batmanTransition.load();
+}
 
 var head = function () {
 	ctx.beginPath();
@@ -180,7 +191,7 @@ var blankify = function () {
 			span.innerHTML = '&nbsp;';
 		}
 		else {
-			span.innerHTML = '__';
+			span.innerHTML = '_';
 		}
 	}
 }
@@ -191,8 +202,9 @@ var clearBlanks = function () {
 	}
 }
 
+
 var showImage = function () {
-	showPic.innerHTML = '<img src="assets/images/'+ currentPuzzle +'.jpg" alt="Image of '+ currentPuzzle +'">'
+	showPic.innerHTML = '<img class="img-circle" src="assets/images/'+ currentPuzzle +'.jpg" alt="Image of '+ currentPuzzle +'">'
 }
 
 var showCorrect = function () {
@@ -203,6 +215,8 @@ var showCorrect = function () {
 			letterSpans[i].innerHTML = userGuess;
 			if (correctArr.indexOf(userGuess) === -1) {
 				correctArr.push(userGuess);
+				document.getElementById('punch').pause();
+				document.getElementById('success').play();
 			}
 		}
 	}
@@ -221,6 +235,7 @@ var checkGuess = function () {
 	if (currentPuzzle.indexOf(userGuess)===-1 && tryCount > 0 && guessArr.indexOf(userGuess) === -1) {
 		if (keyNum>=65 && keyNum<=90) {
 			tryCount-=1;
+			document.getElementById('punch').play();
 			tryCounter.innerHTML = tryCount;
 			return true;
 		}
@@ -244,7 +259,9 @@ function checkSpan () {
 var tryAgain = function () {
 	canvas.width = canvas.width;
 	canvas.height = canvas.height;
+	document.getElementById('batman-transition').play();
 	document.getElementById('try-again').style.visibility = 'hidden';
+	showPic.innerHTML = '';
 	random = Math.floor(Math.random() * puzzleArr.length);
 	currentPuzzle = puzzleArr[random].toUpperCase();
 	tryCount=6;
@@ -258,7 +275,6 @@ var tryAgain = function () {
 }
 
 var checkWin = function () {
-	// var underscore = html.search('_')
 	var solution;
 	var array = blanks.getElementsByTagName("span");
 	concatArr = [];
@@ -269,6 +285,7 @@ var checkWin = function () {
 	solution = concatArr.join('').replace(/&nbsp;/gi,' ');
 
 	if (solution===currentPuzzle && tryCount > 0) {	
+		win.play();
 		winText.innerHTML = 'You <br> <strong style="color:red"><i class="glyphicon glyphicon-star"></i>Win!<i class="glyphicon glyphicon-star"></i></strong>';
 		document.getElementById('try-again').style.visibility = 'visible';
 		showImage();
@@ -277,9 +294,12 @@ var checkWin = function () {
 	}
 
 	if (tryCount <= 0) {
-	winText.innerHTML = 'You <br> <i style="color:">Lose!</i>';
-	document.getElementById('try-again').style.visibility = 'visible';
-	var letterSpans = blanks.getElementsByTagName("span");
+		document.getElementById('success').pause();
+		document.getElementById('punch').pause();
+		document.getElementById('fail').play();
+		winText.innerHTML = 'You <br> <i style="color:">Lose!</i>';
+		document.getElementById('try-again').style.visibility = 'visible';
+		var letterSpans = blanks.getElementsByTagName("span");
 		for (var i = 0; i < letterSpans.length; ++i) {
 			letterSpans[i].innerHTML = letterSpans[i].getAttribute('id');
 		}
@@ -289,11 +309,13 @@ var checkWin = function () {
 var loadGame = function () {
 	tryCounter.innerHTML = tryCount;
 	winText.innerHTML = 'Let\'s play!  Select a letter to start. Guess the Supervillain...'	
-	console.log(puzzleArr.length);
 	blankify();
 	draw();
+	audioPreload();
 }
+
 document.onload = loadGame();
+
 document.onkeyup = function (event) {
 		userGuess = event.key.toUpperCase();
 		keyNum = event.keyCode
@@ -304,10 +326,5 @@ document.onkeyup = function (event) {
 		checkWin();
 	
 }
-// document.getElementById('try-again').addEventListener('click', function () {
-// 		location.reload();
-// 	});
 
 document.getElementById('try-again').addEventListener('click', tryAgain);
-
-	console.log(numOfWins);
