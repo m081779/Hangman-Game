@@ -81,7 +81,6 @@ var leftLeg = function () {
 	ctx.stroke();
 }
 
-
 // Functions for drawing the various faces of the man
 
 var smileFace5 = function () {
@@ -207,24 +206,6 @@ var audioPreload = function () {
 	fail.load();
 	batmanTransition.load();
 	win.load();
-}
-
-// Function for making the canvas respond to resize events
-
-var resize = function () {
-	console.log(hangman.style.width + 'asdfasdfasdf');
-	if (window.innerWidth<576) {
-		console.log(canvas.width + ' window <640');
-		canvas.width = 300;
-	}
-	if (window.innerWidth<980) {
-		console.log(canvas.width + ' window <980');
-		canvas.width = window.innerWidth/2.5;
-		
-	}
-	ctx.clearRect(0,0, canvas.width, canvas.height);//clears the canvas for redrawing
-	draw();//draws the hangman structure on resize
-	drawMan();//draws the man according to the tryCount variable on resize
 }
 
 //function for converting the keyboard letter ID's to numeric values for 
@@ -435,7 +416,3 @@ document.onclick = function (event) {
 	drawMan();
 	checkWin();
 }
-
-//Resize event listener for the canvas
-
-document.onresize = resize();
