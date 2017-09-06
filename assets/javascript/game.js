@@ -37,13 +37,17 @@ var resize = function () {
 	console.log('resizing');
 	var hangman = document.getElementById('hangman');
 	canvas.width = window.innerWidth/4.5;
-	// canvas.height = window.innerHeight/1.75;
-
-	if (window.innerWidth<980) {
-		console.log('resizing dynamically');
-		canvas.width = window.innerWidth/2.5;
-		// canvas.height = window.innerHeight/1.75;
+	
+	if (window.innerWidth<640) {
+		console.log(canvas.width + ' window <640');
+		canvas.width = window.innerWidth;
 	}
+	if (window.innerWidth<980) {
+		console.log(canvas.width + ' window <980');
+		canvas.width = window.innerWidth/2.5;
+		
+	}
+	ctx.clearRect(0,0, canvas.width, canvas.height);
 	draw();
 	drawMan();
 }
@@ -360,5 +364,5 @@ document.onclick = function (event) {
 		drawMan();
 		checkWin();
 }
-canvas.addEventListener('resize', resize);
+// canvas.addEventListener('resize', resize);
 document.onresize = resize();

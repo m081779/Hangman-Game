@@ -14,7 +14,7 @@ body {
 }
 
 canvas {
-	border: 1px solid blue;
+	/*border: 1px solid blue;*/
 	margin: auto;
 	display: block;
 }
@@ -51,4 +51,10 @@ h1#heading-text {
 	margin-bottom: 10px;
 	align-content: center;
 	justify-content: center;
+}
+
+@media (max-width: 640px) {
+	canvas {
+		width: 400px;
+	}
 }
