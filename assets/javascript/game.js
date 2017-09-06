@@ -34,11 +34,13 @@ var audioPreload = function () {
 }
 
 var resize = function () {
+	console.log('resizing');
 	var hangman = document.getElementById('hangman');
-	canvas.width = window.innerWidth/4;
+	canvas.width = window.innerWidth/4.5;
 	// canvas.height = window.innerHeight/1.75;
 
 	if (window.innerWidth<980) {
+		console.log('resizing dynamically');
 		canvas.width = window.innerWidth/2.5;
 		// canvas.height = window.innerHeight/1.75;
 	}
@@ -180,13 +182,13 @@ var drawMan = function () {
 var draw = function () {
 	ctx.beginPath();
 	ctx.fillStyle = 'saddlebrown';
-	ctx.fillRect(canvas.width/4.8,50,20,270);
-	ctx.fillRect(canvas.width/4.8,300,200,55);
-	ctx.fillRect(canvas.width/4.8,30,165,20);
+	ctx.fillRect(canvas.width/6.5,50,20,270);
+	ctx.fillRect(canvas.width/6.5,300,200,55);
+	ctx.fillRect(canvas.width/6.5,30,165,20);
 
 	ctx.beginPath();
 	ctx.strokeStyle = 'saddlebrown';
-	ctx.moveTo(canvas.width/4.2,90);
+	ctx.moveTo(canvas.width/5.4,90);
 	ctx.lineTo(canvas.width/2.6,38);
 	ctx.lineWidth = '20';
 	ctx.stroke();
