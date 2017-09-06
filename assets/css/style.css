@@ -5,7 +5,7 @@ body {
 	padding: 0;	
 	/*color: blue;*/
 	font-weight: 900;
-	/*background-color: lightblue;*/
+	background-color: lightblue;
 	background-image: url('../images/background.jpg');
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -53,8 +53,41 @@ h1#heading-text {
 	justify-content: center;
 }
 
+/*.letter {
+	padding:5px 15px;
+}*/
+@media (max-width: 992px) {
+	.letter {
+		padding: 5px 20px;
+	}
+}
+
+@media (max-width: 768px) {
+	.letter {
+		padding: 5px 20px;
+	}
+}
+
 @media (max-width: 640px) {
-	canvas {
-		width: 400px;
+	.letter {
+		padding: 5px 15px;
+	}
+}
+
+@media (max-width: 540px) {
+	.letter {
+		padding: 5px 10px;
+	}
+}
+
+@media (max-width: 440px) {
+	.letter {
+		padding: 5px 5px;
+	}
+}
+
+@media (max-width: 340px) {
+	.letter {
+		padding: 5px 3px;
 	}
 }
