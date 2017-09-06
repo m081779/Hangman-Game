@@ -3,7 +3,6 @@ body {
 	height: 100%;	
 	margin: 0;
 	padding: 0;	
-	/*color: blue;*/
 	font-weight: 900;
 	background-color: lightblue;
 	background-image: url('../images/background.jpg');
@@ -14,7 +13,7 @@ body {
 }
 
 canvas {
-	/*border: 1px solid blue;*/
+	border: 1px solid blue;
 	margin: auto;
 	display: block;
 }
@@ -22,12 +21,6 @@ canvas {
 span {
 	font-size: 25px;
 	margin-right: 3px;
-}
-
-button#try-again {
-	visibility: hidden;
-	font-size: 20px;
-	white-space: pre;
 }
 
 .well {
@@ -38,12 +31,15 @@ h1#heading-text {
 	color: red;
 	font-weight: 900;
 	text-shadow: 5px 5px 5px rgba(255,255,255,1);
-
 }
 
 #hangman, #data {
 	box-shadow: 3px 3px 5px rgba(0,0,0,0.6);
 }
+
+
+
+/*media queries and styling for making the responsive keyboard*/
 
 .letter-row, #keyboard {
 	display: flex;
@@ -53,16 +49,7 @@ h1#heading-text {
 	justify-content: center;
 }
 
-/*.letter {
-	padding:5px 15px;
-}*/
 @media (max-width: 992px) {
-	.letter {
-		padding: 5px 20px;
-	}
-}
-
-@media (max-width: 768px) {
 	.letter {
 		padding: 5px 20px;
 	}
@@ -91,3 +78,11 @@ h1#heading-text {
 		padding: 5px 3px;
 	}
 }
+
+
+
+
+
+
+
+
