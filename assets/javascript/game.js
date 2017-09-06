@@ -24,11 +24,12 @@ canvas.width = window.innerWidth/4;
 canvas.height = window.innerHeight/1.75;
 
 var audioPreload = function () {
-	win.load();
+	
 	punch.load();
 	success.load();
 	fail.load();
 	batmanTransition.load();
+	win.load();
 }
 
 var head = function () {
