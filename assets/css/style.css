@@ -14,7 +14,7 @@ body {
 }
 
 canvas {
-/*	border: 1px solid blue;*/
+	border: 1px solid blue;
 	margin: auto;
 	display: block;
 }
@@ -31,7 +31,7 @@ button#try-again {
 }
 
 .well {
-	opacity: 0.9;
+	opacity: 0.95;
 }
 
 h1#heading-text {
@@ -41,6 +41,14 @@ h1#heading-text {
 
 }
 
-hr {
-border-color: white;
+#hangman, #data {
+	box-shadow: 3px 3px 5px rgba(0,0,0,0.6);
+}
+
+.letter-row, #keyboard {
+	display: flex;
+	flex-wrap: wrap;
+	margin-bottom: 10px;
+	align-content: center;
+	justify-content: center;
 }

@@ -1,5 +1,6 @@
 var userGuess;
 var guessArr = [];
+var letterArr = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
 var puzzleArr = ['magneto', 'joker', 'doctor doom', 'lex luthor', 'loki', 'catwoman', 'two face', 'green goblin', 'red skull', 'mystique', 'juggernaut', 'venom', 'ultron', 'bizarro', 'doctor octopus', 'bane', 'the penguin', 'harley quinn', 'scarecrow', 'riddler', 'the lizard', 'poison ivy', 'mister freeze', 'magog', 'mandarin', 'mysterio', 'negan', 'the governor'];
 var random = Math.floor(Math.random() * puzzleArr.length);
 var currentPuzzle = puzzleArr[random].toUpperCase();
@@ -20,8 +21,8 @@ var guesses = document.getElementById('guesses');
 var tryAgain =  document.getElementById('try-again')
 var canvas = document.querySelector('canvas');
 var ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth/4;
-canvas.height = window.innerHeight/1.75;
+// canvas.width = window.innerWidth/4;
+canvas.height = 375;
 
 var audioPreload = function () {
 	
@@ -30,6 +31,23 @@ var audioPreload = function () {
 	fail.load();
 	batmanTransition.load();
 	win.load();
+}
+
+var resize = function () {
+	var hangman = document.getElementById('hangman');
+	canvas.width = window.innerWidth/4;
+	// canvas.height = window.innerHeight/1.75;
+
+	if (window.innerWidth<980) {
+		canvas.width = window.innerWidth/2.5;
+		// canvas.height = window.innerHeight/1.75;
+	}
+	draw();
+	drawMan();
+}
+
+var convertLetterToNum = function (index) {
+	return letterArr.indexOf(index)+65;
 }
 
 var head = function () {
@@ -162,14 +180,14 @@ var drawMan = function () {
 var draw = function () {
 	ctx.beginPath();
 	ctx.fillStyle = 'saddlebrown';
-	ctx.fillRect(80,50,20,270);
-	ctx.fillRect(80,300,200,55);
-	ctx.fillRect(80,30,165,20);
+	ctx.fillRect(canvas.width/4.8,50,20,270);
+	ctx.fillRect(canvas.width/4.8,300,200,55);
+	ctx.fillRect(canvas.width/4.8,30,165,20);
 
 	ctx.beginPath();
 	ctx.strokeStyle = 'saddlebrown';
-	ctx.moveTo(90,90);
-	ctx.lineTo(150,38);
+	ctx.moveTo(canvas.width/4.2,90);
+	ctx.lineTo(canvas.width/2.6,38);
 	ctx.lineWidth = '20';
 	ctx.stroke();
 
@@ -329,3 +347,16 @@ document.onkeyup = function (event) {
 }
 
 document.getElementById('try-again').addEventListener('click', tryAgain);
+// document.getElementById('keyboard').addEventListener('click', keyboardInput);
+document.onclick = function (event) {
+	console.log(userGuess);
+	userGuess = event.target.id.toUpperCase();
+	keyNum = convertLetterToNum(userGuess);
+	checkGuess();
+		showCorrect();
+		guessList();
+		drawMan();
+		checkWin();
+}
+canvas.addEventListener('resize', resize);
+document.onresize = resize();
