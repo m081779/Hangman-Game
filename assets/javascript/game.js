@@ -162,8 +162,8 @@ var drawMan = function () {
 var draw = function () {
 	ctx.beginPath();
 	ctx.fillStyle = 'saddlebrown';
-	ctx.fillRect(80,50,20,300);
-	ctx.fillRect(80,330,200,55);
+	ctx.fillRect(80,50,20,270);
+	ctx.fillRect(80,300,200,55);
 	ctx.fillRect(80,30,165,20);
 
 	ctx.beginPath();
@@ -260,7 +260,7 @@ function checkSpan () {
 var tryAgain = function () {
 	canvas.width = canvas.width;
 	canvas.height = canvas.height;
-	document.getElementById('batman-transition').play();
+	batmanTransition.play();
 	document.getElementById('try-again').style.visibility = 'hidden';
 	showPic.innerHTML = '';
 	random = Math.floor(Math.random() * puzzleArr.length);
