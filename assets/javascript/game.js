@@ -10,7 +10,7 @@ var letterArr = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P'
 var puzzleArr = ['magneto', 'joker', 'doctor doom', 'lex luthor', 'loki', 'catwoman', 'two face', 'green goblin', 'red skull', 'mystique', 'juggernaut', 'venom', 'ultron', 'bizarro', 'doctor octopus', 'bane', 'the penguin', 'harley quinn', 'scarecrow', 'the riddler', 'the lizard', 'poison ivy', 'mister freeze', 'magog', 'mandarin', 'mysterio', 'negan', 'the governor'];
 var random = Math.floor(Math.random() * puzzleArr.length);
 var currentPuzzle = puzzleArr[random].toUpperCase();
-var endState;
+var endState = false;
 
 
 //variables for selecting ID elements
@@ -291,7 +291,7 @@ var game = {
 
 	//function that resets everything to the start state when a win or a loss is detected
 	tryAgain: function () {
-		endstate = false;
+		endState = false;
 		//resets canvas
 		canvas.width = canvas.width;
 		canvas.height = canvas.height;
