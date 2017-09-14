@@ -30,7 +30,7 @@ span {
 h1#heading-text {
 	color: red;
 	font-weight: 900;
-	text-shadow: 5px 5px 5px rgba(255,255,255,1);
+	text-shadow: -3px -3px 2px rgba(255,255,255,1);
 }
 
 #hangman, #data {

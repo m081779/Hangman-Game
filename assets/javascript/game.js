@@ -293,6 +293,10 @@ var game = {
 	//function that resets everything to the start state when a win or a loss is detected
 	tryAgain: function () {
 
+		//writes winCount and lossCount to the screen
+		winCounter.innerHTML = winCount;
+		lossCounter.innerHTML = lossCount;
+
 		//sets endState variable to false to to allow keyup function to work
 		endState = false;
 
@@ -319,7 +323,7 @@ var game = {
 		guesses.innerHTML = guessArr;
 		
 		//resets #win-text to initial value
-		winText.innerHTML = 'Let\'s play!  Select a letter to start. Guess the Supervillain...'	
+		winText.innerHTML = "Let's play!  Select a letter to start. Guess the Supervillain..."	
 
 		//clears old puzzle blanks, writes currentPuzzle 
 		//blanks and draws the hangman structure
