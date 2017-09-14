@@ -12,17 +12,8 @@ body {
 	font-size: 18px;
 }
 
-.modal {
-	height: 100%;
-	width: 100%;
-	background-color: gray;
-	opacity:0.9;
-	z-index: 100;
-	/*display:;*/
-}
 
 canvas {
-	/*border: 1px solid blue;*/
 	margin: auto;
 	display: block;
 }

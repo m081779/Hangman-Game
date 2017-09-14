@@ -4,6 +4,7 @@ var userGuess;
 var keyNum;
 var tryCount = 6;
 var winCount = 0;
+var lossCount = 0;
 var guessArr = [];
 var correctArr = [];
 var letterArr = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
@@ -25,6 +26,7 @@ var blanks = document.getElementById('blanks');
 var showPic = document.getElementById('show-pic');
 var tryCounter = document.getElementById('try-counter');
 var winCounter = document.getElementById('win-counter');
+var lossCounter = document.getElementById('loss-counter');
 var hangman = document.getElementById('hangman');
 var guesses = document.getElementById('guesses');
 var tryAgain =  document.getElementById('try-again')
@@ -86,7 +88,6 @@ var game = {
 
 	// Functions for drawing the various faces of the man
 	smileFace5: function () {
-
 		ctx.beginPath();
 		ctx.arc(canvas.width/2,115,10,0,1*Math.PI);
 		ctx.stroke();
@@ -291,7 +292,10 @@ var game = {
 
 	//function that resets everything to the start state when a win or a loss is detected
 	tryAgain: function () {
+
+		//sets endState variable to false to to allow keyup function to work
 		endState = false;
+
 		//resets canvas
 		canvas.width = canvas.width;
 		canvas.height = canvas.height;
@@ -339,7 +343,10 @@ var game = {
 
 		//conditional that checks win conditions
 		if (solution===currentPuzzle && tryCount > 0) {	
+
+			//sets endState variable to true to stop keyups from registering
 			endState = true;
+
 			//increments the winCount and writes it to #win-count
 			winCount++;
 			winCounter.innerHTML = winCount;
@@ -356,9 +363,17 @@ var game = {
 
 		//conditional that checks loss conditions
 		if (tryCount <= 0) {
+
+			//sets endState variable to true to stop keyups from registering
 			endState = true;
+
+			//increments the winCount and writes it to #win-count
+			lossCount++;
+			lossCounter.innerHTML = lossCount;
+
 			//plays fail music
 			fail.play();
+			
 			// displays loss text to #win-text
 			winText.innerHTML = 'You <br> <i style="color:">Lose!</i>';
 
@@ -400,13 +415,16 @@ document.onkeyup = function (event) {
 }
 
 //Function that repeats the functionality of the keyup function, but 
-//used for the keyboard that displays for mobile devices
+//used for the keyboard that displays on mobile devices
 document.onclick = function (event) {
-	userGuess = event.target.id.toUpperCase();
-	keyNum = game.convertLetterToNum(userGuess);
-	game.checkGuess();
-	game.showCorrect();
-	game.guessList();
-	game.drawMan();
-	game.checkWin();
+
+	if (!endState) {
+		userGuess = event.target.id.toUpperCase();
+		keyNum = game.convertLetterToNum(userGuess);
+		game.checkGuess();
+		game.showCorrect();
+		game.guessList();
+		game.drawMan();
+		game.checkWin();
+	}
 }
