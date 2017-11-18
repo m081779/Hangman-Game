@@ -3,11 +3,11 @@
 [Click here](https://m081779.github.io/Hangman-Game/) to see the deployed version.
 
 ## Technologies used:
-	* HTML5
-	* HTML5 Canvas
-	* CSS3
-	* Bootstrap
-	* Javascript
+* HTML5
+* HTML5 Canvas
+* CSS3
+* Bootstrap
+* Javascript
 
 
 ## This is a version of the classic hangman game with a supervillain theme, complete with sound effects inspired by the 1960's Batman TV show.
