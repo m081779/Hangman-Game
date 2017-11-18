@@ -10,11 +10,11 @@
 * Javascript
 
 
-## This is a version of the classic hangman game with a supervillain theme, complete with sound effects inspired by the 1960's Batman TV show.
+## This is a version of the classic hangman game with a supervillain theme, complete with sound effects inspired by the 1960's Batman TV show.  The game is played by entering letters from the keyboard to guess.  All guesses are tracked, as well as wins and losses.  User input is validated and only valid letter characters are registered.
 ![Image of customer view](https://github.com/m081779/Hangman-Game/blob/master/assets/images/img1.png)
 
 
-## Fully responsive down to 380px device width:
+## Fully responsive down to 380px device width with a touch screen compatible keyboard on screen:
 ![Image of customer view](https://github.com/m081779/Hangman-Game/blob/master/assets/images/img9.png)
 
 
