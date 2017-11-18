@@ -14,7 +14,7 @@
 ![Image of customer view](https://github.com/m081779/Hangman-Game/blob/master/assets/images/img1.png)
 
 
-Fully responsive down to 380px device width:
+## Fully responsive down to 380px device width:
 ![Image of customer view](https://github.com/m081779/Hangman-Game/blob/master/assets/images/img9.png)
 
 
