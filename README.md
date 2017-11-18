@@ -18,11 +18,11 @@
 ![Image of customer view](https://github.com/m081779/Hangman-Game/blob/master/assets/images/img9.png)
 
 
-When the user wins, an image of the Supervillain is displayed:
+## When the user wins, an image of the Supervillain is displayed:
 ![Image of customer view](https://github.com/m081779/Hangman-Game/blob/master/assets/images/img2.png)
 
 
-With each incorrect guess, more of the man is drawn using HTML5 Canvas functions.  Each face he makes gets progressively more concerned:
+## With each incorrect guess, more of the man is drawn using HTML5 Canvas functions.  Each face he makes gets progressively more concerned:
 ![Image of customer view](https://github.com/m081779/Hangman-Game/blob/master/assets/images/img3.png)
 
 
